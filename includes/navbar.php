@@ -8,8 +8,8 @@
             <span>✦</span> AURELIA
         </a>
 
-        <!-- NAVIGATION LINKS -->
-        <ul class="nav-links">
+        <!-- NAV LINKS -->
+        <ul class="nav-links" id="navLinks">
             <li>
                 <a href="/salon-booking-system/index.php">Home</a>
             </li>
@@ -34,6 +34,14 @@
                 Book Now
             </a>
         </div>
+
+        <!-- BURGER BUTTON -->
+        <button class="burger-menu"
+                type="button"
+                aria-label="Toggle navigation"
+                onclick="toggleMenu()">
+            ☰
+        </button>
 
     </nav>
 
