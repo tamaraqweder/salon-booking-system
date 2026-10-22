@@ -1,3 +1,37 @@
+<?php
+
+
+require "../classes/Database.php";
+require "../classes/Auth.php";
+
+$database=new Database();
+$pdo=$database->connect();
+$auth = new Auth($pdo);
+$error = "";
+
+if($_SERVER["REQUEST_METHOD"]==="POST"){
+    $full_name = $_POST["full_name"] ?? "";
+    $email = $_POST["email"] ?? "";
+    $password = $_POST["password"] ?? "";
+    $phone = $_POST["phone"] ?? "";
+
+
+  $result = $auth->register($full_name, $email, $password, $phone);
+  if ($result) {
+    header("Location: login.php");
+    exit;
+}
+ else {
+    $error = "Email already registered";
+}
+
+
+}
+
+
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +80,14 @@
                         placeholder="Enter your email"
                         required>
                 </div>
+
+
+
+                 <?php if ($error): ?>
+                 <p class="error-message">
+                          <?= $error ?>
+                 </p>
+               <?php endif; ?>
 
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
