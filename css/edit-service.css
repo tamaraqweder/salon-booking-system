@@ -1,0 +1,141 @@
+
+/* Edit Service Page */
+
+.edit-service-page {
+    min-height: 100vh;
+    background-color: #f8f6f2;
+    padding: 60px 20px;
+}
+
+/* Form Container */
+
+.edit-service-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Title */
+
+.edit-service-container h1 {
+    text-align: center;
+    color: #2f2921;
+    margin-bottom: 10px;
+}
+
+.edit-service-container p {
+    text-align: center;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+/* Form */
+
+.edit-service-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Labels */
+
+.edit-service-container label {
+    font-weight: 600;
+    color: #333;
+    margin-top: 8px;
+}
+
+/* Inputs */
+
+.edit-service-container input,
+.edit-service-container select,
+.edit-service-container textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #ddd5c9;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    background-color: white;
+}
+
+/* Description */
+
+.edit-service-container textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Focus */
+
+.edit-service-container input:focus,
+.edit-service-container select:focus,
+.edit-service-container textarea:focus {
+    outline: none;
+    border-color: #b79457;
+}
+
+/* Service Image */
+
+.edit-service-container img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+/* Save Button */
+
+.edit-service-container button {
+    background-color: #b79457;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.edit-service-container button:hover {
+    background-color: #967541;
+}
+
+/* Cancel Button */
+
+.edit-service-container .cancel-btn {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    color: #777;
+    text-decoration: none;
+    border: 1px solid #ddd5c9;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.edit-service-container .cancel-btn:hover {
+    background-color: #f8f6f2;
+    color: #967541;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+
+    .edit-service-page {
+        padding: 30px 15px;
+    }
+
+    .edit-service-container {
+        padding: 24px;
+    }
+
+}

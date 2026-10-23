@@ -1,0 +1,171 @@
+
+/* ===== SERVICES PAGE ===== */
+
+.services-page {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto 80px;
+}
+
+.services-page > h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.services-page > p {
+    font-size: 15px;
+    color: #777;
+}
+
+/* ===== ADD SERVICE ===== */
+
+.add-service {
+    background-color: #fff;
+    padding: 30px;
+    margin-top: 35px;
+    border: 1px solid #eee6d7;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.add-service h2 {
+    font-size: 22px;
+    color: #b89654;
+    margin-bottom: 25px;
+}
+
+.add-service form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.add-service label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    margin-top: 8px;
+}
+
+.add-service input,
+.add-service select,
+.add-service textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    background-color: #fff;
+    font: inherit;
+    color: #333;
+    outline: none;
+}
+
+.add-service textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.add-service input:focus,
+.add-service select:focus,
+.add-service textarea:focus {
+    border-color: #b89654;
+}
+
+.add-service button {
+    background-color: #b89654;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 7px;
+    font-size: 15px;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.add-service button:hover {
+    background-color: #96763d;
+}
+
+/* ===== SERVICES LIST ===== */
+
+.services-list {
+    background-color: white;
+    padding: 30px;
+    margin-top: 35px;
+    border: 1px solid #eee6d7;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.services-list h2 {
+    font-size: 22px;
+    color: #b89654;
+    margin-bottom: 25px;
+}
+
+.services-list table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+.services-list th,
+.services-list td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.services-list th {
+    background-color: #f8f3e9;
+    color: #8d703a;
+    font-weight: 600;
+}
+
+.services-list tbody tr:hover {
+    background-color: #faf8f3;
+}
+
+/* ===== ACTION BUTTONS ===== */
+
+.services-list button {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #b89654;
+    background-color: white;
+    color: #96763d;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: 0.3s;
+}
+
+.services-list button:hover {
+    background-color: #b89654;
+    color: white;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+    .services-page {
+        width: 94%;
+        margin-top: 30px;
+    }
+
+    .services-page > h1 {
+        font-size: 26px;
+    }
+
+    .add-service,
+    .services-list {
+        padding: 20px;
+    }
+
+    .add-service button {
+        width: 100%;
+    }
+}

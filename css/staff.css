@@ -1,0 +1,126 @@
+
+.staff-page {
+    min-height: 100vh;
+    background-color: #f8f6f2;
+    padding: 60px 8%;
+}
+
+.staff-page h1 {
+    color: #2f2921;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.staff-page > p {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.staff-list {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+}
+
+.staff-list h2 {
+    color: #2f2921;
+    margin-bottom: 20px;
+}
+
+.staff-list table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.staff-list th {
+    background-color: #f8f6f2;
+    color: #967541;
+    padding: 15px;
+}
+
+.staff-list td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+}
+
+.staff-list tbody tr:hover {
+    background-color: #fcfaf7;
+}
+
+.staff-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.staff-actions button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #f4ead8;
+    color: #967541;
+}
+
+.delete-btn {
+    background-color: #fdeaea;
+    color: #c0392b;
+}
+
+
+.add-staff {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.add-staff h2 {
+    color: #2f2921;
+    margin-bottom: 25px;
+}
+
+.add-staff form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.add-staff label {
+    font-weight: 600;
+    color: #333;
+}
+
+.add-staff input {
+    padding: 12px;
+    border: 1px solid #ddd5c9;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.add-staff input:focus {
+    outline: none;
+    border-color: #b79457;
+}
+
+.add-staff button {
+    background-color: #b79457;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.add-staff button:hover {
+    background-color: #967541;
+}
