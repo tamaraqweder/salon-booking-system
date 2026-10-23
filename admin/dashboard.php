@@ -1,13 +1,17 @@
 <?php
-require_once "../classes/Database.php";
-require_once "../classes/Service.php";
+require "../classes/Database.php";
+require "../classes/Service.php";
+require "../classes/Staff.php";
 
 $database = new Database();
 $pdo = $database->connect();
 
 $services = new Service($pdo);
-
 $totalServices = $services->countServices();
+
+
+$staff = new Staff($pdo);
+$totalStaff = $staff->getTotalStaff();
 ?>
 
 
@@ -41,7 +45,7 @@ $totalServices = $services->countServices();
 
             <div class="stat-card">
                 <h3>Total Staff</h3>
-                <h2>0</h2>
+                <h2><?= $totalStaff ?></h2>
             </div>
 
             <div class="stat-card">

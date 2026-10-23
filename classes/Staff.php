@@ -74,4 +74,15 @@ class Staff {
         return $stmt->execute([$staff_id]);
     }
 
+
+    public function getTotalStaff() {
+
+    $sql = "SELECT COUNT(*) FROM staff";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchColumn();
+}
+
 }
