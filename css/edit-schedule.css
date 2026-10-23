@@ -9,8 +9,6 @@
     padding: 60px 8%;
 }
 
-/* Page Title */
-
 .edit-schedule-page h1 {
     color: #2f2921;
     font-size: 32px;
@@ -22,7 +20,10 @@
     margin-bottom: 30px;
 }
 
-/* Edit Form Container */
+
+/* ==========================
+   EDIT FORM
+========================== */
 
 .edit-schedule-form {
     background-color: white;
@@ -39,22 +40,16 @@
     margin-bottom: 25px;
 }
 
-/* Form Layout */
-
 .edit-schedule-form form {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-/* Labels */
-
 .edit-schedule-form label {
     font-weight: 600;
     color: #333;
 }
-
-/* Inputs and Select */
 
 .edit-schedule-form input,
 .edit-schedule-form select {
@@ -67,15 +62,16 @@
     box-sizing: border-box;
 }
 
-/* Focus */
-
 .edit-schedule-form input:focus,
 .edit-schedule-form select:focus {
     outline: none;
     border-color: #b79457;
 }
 
-/* Update Button */
+
+/* ==========================
+   UPDATE BUTTON
+========================== */
 
 .edit-schedule-form button {
     background-color: #b79457;
@@ -94,18 +90,22 @@
     background-color: #967541;
 }
 
-/* Responsive */
+
+/* ==========================
+   RESPONSIVE
+========================== */
 
 @media (max-width: 768px) {
+
     .edit-schedule-page {
         padding: 30px 5%;
     }
 
-    .edit-schedule-form {
-        padding: 20px;
-    }
-
     .edit-schedule-page h1 {
         font-size: 27px;
+    }
+
+    .edit-schedule-form {
+        padding: 20px;
     }
 }

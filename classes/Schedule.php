@@ -71,4 +71,17 @@ public function updateSchedule($schedule_id, $staff_id, $day_of_week, $start_tim
 }
 
 
+
+public function deleteSchedule($schedule_id) {
+
+    $sql = "DELETE FROM staff_schedules
+            WHERE schedule_id = ?";
+
+    $stmt = $this->pdo->prepare($sql);
+
+    return $stmt->execute([$schedule_id]);
+}
+
+
+
 }

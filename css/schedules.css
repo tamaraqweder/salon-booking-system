@@ -1,15 +1,13 @@
 
-/* ==============================
+/* ==========================
    MANAGE SCHEDULES PAGE
-============================== */
+========================== */
 
 .schedules-page {
     min-height: 100vh;
     background-color: #f8f6f2;
     padding: 60px 8%;
 }
-
-/* Page Heading */
 
 .schedules-page h1 {
     color: #2f2921;
@@ -22,59 +20,10 @@
     margin-bottom: 30px;
 }
 
-/* Schedules Table Container */
 
-.schedules-list {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    overflow-x: auto;
-}
-
-.schedules-list h2 {
-    color: #2f2921;
-    font-size: 23px;
-    margin-bottom: 20px;
-}
-
-/* Table */
-
-.schedules-list table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-}
-
-/* Table Header */
-
-.schedules-list th {
-    background-color: #f8f6f2;
-    color: #967541;
-    padding: 15px;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-/* Table Data */
-
-.schedules-list td {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-    color: #444;
-}
-
-/* Hover Effect */
-
-.schedules-list tbody tr:hover {
-    background-color: #fcfaf7;
-    transition: background-color 0.2s ease;
-}
-
-
-/* ==============================
+/* ==========================
    ADD SCHEDULE FORM
-============================== */
+========================== */
 
 .add-schedule {
     background-color: white;
@@ -84,15 +33,11 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* Heading */
-
 .add-schedule h2 {
     color: #2f2921;
     font-size: 23px;
     margin-bottom: 25px;
 }
-
-/* Form Layout */
 
 .add-schedule form {
     display: flex;
@@ -100,14 +45,10 @@
     gap: 12px;
 }
 
-/* Labels */
-
 .add-schedule label {
     font-weight: 600;
     color: #333;
 }
-
-/* Inputs and Select */
 
 .add-schedule input,
 .add-schedule select {
@@ -120,15 +61,11 @@
     box-sizing: border-box;
 }
 
-/* Focus */
-
 .add-schedule input:focus,
 .add-schedule select:focus {
     outline: none;
     border-color: #b79457;
 }
-
-/* Add Button */
 
 .add-schedule button {
     background-color: #b79457;
@@ -140,41 +77,125 @@
     font-size: 15px;
     font-weight: 600;
     margin-top: 10px;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .add-schedule button:hover {
     background-color: #967541;
 }
-.edit-btn {
+
+
+/* ==========================
+   SCHEDULES TABLE
+========================== */
+
+.schedules-list {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+}
+
+.schedules-list h2 {
+    color: #2f2921;
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.schedules-list table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.schedules-list th {
+    background-color: #f8f6f2;
+    color: #967541;
+    padding: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.schedules-list td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+}
+
+.schedules-list tbody tr:hover {
+    background-color: #fcfaf7;
+}
+
+
+/* ==========================
+   EDIT BUTTON
+========================== */
+
+.schedules-list .edit-btn {
     display: inline-block;
     background-color: #b79457;
     color: white;
-    padding: 8px 16px;
+    padding: 9px 18px;
+    border: 1px solid #b79457;
     border-radius: 6px;
     text-decoration: none;
-    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s ease;
 }
 
-.edit-btn:hover {
+.schedules-list .edit-btn:hover {
     background-color: #967541;
+    border-color: #967541;
+    transform: translateY(-2px);
 }
 
-/* Responsive */
 
-@media (max-width: 600px) {
-    .add-schedule {
-        padding: 25px 20px;
-    }
+/* ==========================
+   DELETE BUTTON
+========================== */
+
+.schedules-list td form {
+    display: inline-block;
+    margin-left: 8px;
 }
 
-/* Responsive */
+.schedules-list .delete-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: #b79457;
+    border: 1px solid #b79457;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.schedules-list .delete-btn:hover {
+    background-color: #b79457;
+    color: white;
+    transform: translateY(-2px);
+}
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
 
 @media (max-width: 768px) {
+
     .schedules-page {
         padding: 30px 5%;
     }
 
+    .schedules-page h1 {
+        font-size: 27px;
+    }
+
+    .add-schedule,
     .schedules-list {
         padding: 20px;
     }
@@ -183,5 +204,9 @@
     .schedules-list td {
         padding: 12px;
         font-size: 14px;
+    }
+
+    .schedules-list td form {
+        margin-left: 4px;
     }
 }

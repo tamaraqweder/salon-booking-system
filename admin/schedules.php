@@ -138,17 +138,40 @@ $allSchedules = $schedule->getAllSchedules();
                 <tbody>
 
                     <?php foreach ($allSchedules as $item): ?>
+                        
+<tr>
+    <td><?= htmlspecialchars($item["schedule_id"]) ?></td>
+    <td><?= htmlspecialchars($item["staff_id"]) ?></td>
+    <td><?= htmlspecialchars($item["day_of_week"]) ?></td>
+    <td><?= htmlspecialchars($item["start_time"]) ?></td>
+    <td><?= htmlspecialchars($item["end_time"]) ?></td>
 
-                        <tr>
-                            <td><?= htmlspecialchars($item["schedule_id"]) ?></td>
-                            <td><?= htmlspecialchars($item["staff_id"]) ?></td>
-                            <td><?= htmlspecialchars($item["day_of_week"]) ?></td>
-                            <td><?= htmlspecialchars($item["start_time"]) ?></td>
-                            <td><?= htmlspecialchars($item["end_time"]) ?></td>
-                            
-                            <td> <a href="edit-schedule.php?id=<?= $item['schedule_id'] ?>" class="edit-btn">  Edit </a></td>
-                        </tr>
+    <td>
+        <a href="edit-schedule.php?id=<?= $item['schedule_id'] ?>"
+           class="edit-btn">
+            Edit
+        </a>
 
+        <form action="delete-schedule.php"
+              method="POST"
+              onsubmit="return confirm('Are you sure you want to delete this schedule?');">
+
+            <input
+                type="hidden"
+                name="schedule_id"
+                value="<?= htmlspecialchars($item['schedule_id']) ?>"
+            >
+
+            <button type="submit" name="delete_schedule" class="delete-btn">
+                Delete
+            </button>
+
+        </form>
+    </td>
+</tr>
+
+
+                       
                     <?php endforeach; ?>
 
                 </tbody>
