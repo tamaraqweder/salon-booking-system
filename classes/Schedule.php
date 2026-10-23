@@ -18,7 +18,7 @@ class Schedule {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    
+
 
 
     public function addSchedule($staff_id, $day_of_week, $start_time, $end_time) {
@@ -35,5 +35,40 @@ class Schedule {
         $start_time,
         $end_time
     ]);
+
 }
+ public function getScheduleById($schedule_id) {
+
+        $sql = "SELECT * FROM staff_schedules
+                WHERE schedule_id = ?";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$schedule_id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+    
+public function updateSchedule($schedule_id, $staff_id, $day_of_week, $start_time, $end_time) {
+
+    $sql = "UPDATE staff_schedules
+            SET staff_id = ?,
+                day_of_week = ?,
+                start_time = ?,
+                end_time = ?
+            WHERE schedule_id = ?";
+
+    $stmt = $this->pdo->prepare($sql);
+
+    return $stmt->execute([
+        $staff_id,
+        $day_of_week,
+        $start_time,
+        $end_time,
+        $schedule_id
+    ]);
+}
+
+
 }

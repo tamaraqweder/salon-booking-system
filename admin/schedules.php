@@ -118,23 +118,7 @@ $allSchedules = $schedule->getAllSchedules();
 </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <section class="schedules-list">
+<section class="schedules-list">
 
             <h2>Staff Schedules</h2>
 
@@ -147,6 +131,7 @@ $allSchedules = $schedule->getAllSchedules();
                         <th>Day</th>
                         <th>Start Time</th>
                         <th>End Time</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
 
@@ -160,6 +145,8 @@ $allSchedules = $schedule->getAllSchedules();
                             <td><?= htmlspecialchars($item["day_of_week"]) ?></td>
                             <td><?= htmlspecialchars($item["start_time"]) ?></td>
                             <td><?= htmlspecialchars($item["end_time"]) ?></td>
+                            
+                            <td> <a href="edit-schedule.php?id=<?= $item['schedule_id'] ?>" class="edit-btn">  Edit </a></td>
                         </tr>
 
                     <?php endforeach; ?>
