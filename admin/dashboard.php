@@ -1,17 +1,29 @@
+
 <?php
+
+session_start();
+
 require "../classes/Database.php";
 require "../classes/Service.php";
 require "../classes/Staff.php";
+require "../classes/Booking.php";
 
 $database = new Database();
 $pdo = $database->connect();
 
 $services = new Service($pdo);
-$totalServices = $services->countServices();
-
-
 $staff = new Staff($pdo);
+$booking = new Booking($pdo);
+
+if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "admin") {
+    header("Location: ../pages/login.php");
+    exit;
+}
+
+$totalServices = $services->countServices();
 $totalStaff = $staff->getTotalStaff();
+$totalBookings = $booking->countBookings();
+
 ?>
 
 
@@ -50,7 +62,7 @@ $totalStaff = $staff->getTotalStaff();
 
             <div class="stat-card">
                 <h3>Total Bookings</h3>
-                <h2>0</h2>
+                 <h2><?= $totalBookings ?></h2>
             </div>
 
         </section>

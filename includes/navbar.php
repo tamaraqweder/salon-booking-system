@@ -1,3 +1,10 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
+
 
 <header class="site-header">
 
@@ -29,10 +36,22 @@
                 Log In
             </a>
 
-            <a href="/salon-booking-system/pages/booking.php"
-               class="btn btn-gold">
-                Book Now
-            </a>
+
+
+            <?php if (isset($_SESSION["user_id"])): ?>
+
+                 <a href="/salon-booking-system/pages/logout.php">
+                  Log Out
+                    </a>
+
+            <?php endif; ?>
+
+
+            
+           <a href="/salon-booking-system/customer/create-booking.php" class="btn btn-gold">
+             Book Now
+           </a>
+
         </div>
 
         <!-- BURGER BUTTON -->

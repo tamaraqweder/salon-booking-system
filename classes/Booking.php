@@ -107,4 +107,57 @@ class Booking {
         return $stmt->execute([$booking_id]);
     }
 
+    public function countBookings() {
+
+    $sql = "SELECT COUNT(*) FROM bookings";
+
+    $stmt = $this->pdo->prepare($sql);
+
+    $stmt->execute();
+
+    return $stmt->fetchColumn();
+}
+
+
+
+
+public function isTimeBooked($staff_id, $booking_date, $start_time, $end_time) {
+
+    $sql = "SELECT COUNT(*) FROM bookings
+            WHERE staff_id = ?
+            AND booking_date = ?
+            AND status IN ('pending', 'confirmed')
+            AND start_time < ?
+            AND end_time > ?";
+
+    $stmt = $this->pdo->prepare($sql);
+
+    $stmt->execute([
+        $staff_id,
+        $booking_date,
+        $end_time,
+        $start_time
+    ]);
+
+    return $stmt->fetchColumn() > 0;
+}
+
+
+
+public function getBookingsByUserId($user_id) {
+
+    $sql = "SELECT * FROM bookings WHERE user_id = ?";
+
+    $stmt = $this->pdo->prepare($sql);
+
+    $stmt->execute([$user_id]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+
+
+
+
 }

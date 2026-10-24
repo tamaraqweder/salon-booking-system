@@ -16,7 +16,6 @@
 
     <?php include __DIR__ . '/includes/navbar.php'; ?>
 
-    
     <main>
 
         <!-- HERO SECTION -->
@@ -35,7 +34,7 @@
                     </p>
 
                     <div class="hero-buttons">
-                        <a href="pages/booking.php" class="btn btn-gold">
+                        <a href="customer/create-booking.php" class="btn btn-gold">
                             Book Appointment →
                         </a>
 
@@ -67,37 +66,53 @@
 
                     <article class="service-card">
                         <img src="asstes\images\hair.jpg.png" alt="Hair Styling">
+
                         <div class="service-info">
                             <h3>Hair Styling</h3>
                             <p>Professional haircuts, coloring and styling.</p>
-                            <a href="pages/booking.php">Book Now →</a>
+
+                            <a href="customer/create-booking.php">
+                                Book Now →
+                            </a>
                         </div>
                     </article>
 
                     <article class="service-card">
                         <img src="asstes\images\makeup.jpg.png" alt="Makeup">
+
                         <div class="service-info">
                             <h3>Makeup</h3>
                             <p>Beautiful makeup for every occasion.</p>
-                            <a href="pages/booking.php">Book Now →</a>
+
+                            <a href="customer/create-booking.php">
+                                Book Now →
+                            </a>
                         </div>
                     </article>
 
                     <article class="service-card">
                         <img src="asstes\images\nails.jpg.png" alt="Nail Care">
+
                         <div class="service-info">
                             <h3>Nail Care</h3>
                             <p>Manicure, pedicure and nail treatments.</p>
-                            <a href="pages/booking.php">Book Now →</a>
+
+                            <a href="customer/create-booking.php">
+                                Book Now →
+                            </a>
                         </div>
                     </article>
 
                     <article class="service-card">
                         <img src="asstes\images\facial.jpg.png" alt="Facial Treatments">
+
                         <div class="service-info">
                             <h3>Facial Treatments</h3>
                             <p>Relaxing skincare and facial treatments.</p>
-                            <a href="pages/booking.php">Book Now →</a>
+
+                            <a href="customer/create-booking.php">
+                                Book Now →
+                            </a>
                         </div>
                     </article>
 
@@ -130,7 +145,7 @@
                         elegant environment.
                     </p>
 
-                    <a href="pages/booking.php" class="btn btn-gold">
+                    <a href="customer/create-booking.php" class="btn btn-gold">
                         Book Your Visit →
                     </a>
                 </div>
@@ -148,7 +163,7 @@
 
                 <p>Book your appointment today and let us take care of you.</p>
 
-                <a href="pages/booking.php" class="btn btn-dark">
+                <a href="customer/create-booking.php" class="btn btn-dark">
                     Book Appointment →
                 </a>
 
@@ -158,6 +173,8 @@
     </main>
 
     <?php include __DIR__ . '/includes/footer.php'; ?>
-<script src="js/main.js"></script>
+
+    <script src="js/main.js"></script>
+
 </body>
 </html>

@@ -84,4 +84,33 @@ public function deleteSchedule($schedule_id) {
 
 
 
+
+
+
+public function isStaffAvailable($staff_id, $booking_date, $start_time, $end_time) {
+
+    $day = date("l", strtotime($booking_date));
+
+    $sql = "SELECT COUNT(*) FROM staff_schedules
+            WHERE staff_id = ?
+            AND day_of_week = ?
+            AND start_time <= ?
+            AND end_time >= ?";
+
+    $stmt = $this->pdo->prepare($sql);
+
+    $stmt->execute([
+        $staff_id,
+        $day,
+        $start_time,
+        $end_time
+    ]);
+
+    return $stmt->fetchColumn() > 0;
+}
+
+
+
+
+
 }

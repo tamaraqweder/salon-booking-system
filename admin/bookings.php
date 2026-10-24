@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -17,7 +18,6 @@ if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "admin") {
 }
 
 
-$allBookings = $booking->getAllBookings();
 if (isset($_POST["add_booking"])) {
 
     $user_id = $_POST["user_id"];
@@ -48,6 +48,9 @@ if (isset($_POST["add_booking"])) {
     }
 }
 
+
+$allBookings = $booking->getAllBookings();
+
 ?>
 
 
@@ -74,66 +77,67 @@ if (isset($_POST["add_booking"])) {
 
         <h1>Manage Bookings</h1>
         <p>Manage customer appointments and bookings</p>
-        
-<section class="add-booking">
 
-    <h2>Add New Booking</h2>
 
-    <form method="POST">
+        <section class="add-booking">
 
-        <label for="user_id">User ID</label>
-        <input type="number"
-               id="user_id"
-               name="user_id"
-               min="1"
-               required>
+            <h2>Add New Booking</h2>
 
-        <label for="service_id">Service ID</label>
-        <input type="number"
-               id="service_id"
-               name="service_id"
-               min="1"
-               required>
+            <form method="POST">
 
-        <label for="staff_id">Staff ID</label>
-        <input type="number"
-               id="staff_id"
-               name="staff_id"
-               min="1"
-               required>
+                <label for="user_id">User ID</label>
+                <input type="number"
+                       id="user_id"
+                       name="user_id"
+                       min="1"
+                       required>
 
-        <label for="booking_date">Booking Date</label>
-        <input type="date"
-               id="booking_date"
-               name="booking_date"
-               required>
+                <label for="service_id">Service ID</label>
+                <input type="number"
+                       id="service_id"
+                       name="service_id"
+                       min="1"
+                       required>
 
-        <label for="start_time">Start Time</label>
-        <input type="time"
-               id="start_time"
-               name="start_time"
-               required>
+                <label for="staff_id">Staff ID</label>
+                <input type="number"
+                       id="staff_id"
+                       name="staff_id"
+                       min="1"
+                       required>
 
-        <label for="end_time">End Time</label>
-        <input type="time"
-               id="end_time"
-               name="end_time"
-               required>
+                <label for="booking_date">Booking Date</label>
+                <input type="date"
+                       id="booking_date"
+                       name="booking_date"
+                       required>
 
-        <label for="status">Status</label>
-        <select id="status" name="status" required>
-            <option value="pending">Pending</option>
-            <option value="confirmed">Confirmed</option>
-            <option value="cancelled">Cancelled</option>
-        </select>
+                <label for="start_time">Start Time</label>
+                <input type="time"
+                       id="start_time"
+                       name="start_time"
+                       required>
 
-        <button type="submit" name="add_booking">
-            Add Booking
-        </button>
+                <label for="end_time">End Time</label>
+                <input type="time"
+                       id="end_time"
+                       name="end_time"
+                       required>
 
-    </form>
+                <label for="status">Status</label>
+                <select id="status" name="status" required>
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
 
-</section>
+                <button type="submit" name="add_booking">
+                    Add Booking
+                </button>
+
+            </form>
+
+        </section>
 
 
         <section class="bookings-list">
@@ -141,6 +145,7 @@ if (isset($_POST["add_booking"])) {
             <h2>All Bookings</h2>
 
             <table>
+
                 <thead>
                     <tr>
                         <th>Booking ID</th>
@@ -160,6 +165,7 @@ if (isset($_POST["add_booking"])) {
                     <?php foreach ($allBookings as $item): ?>
 
                         <tr>
+
                             <td><?= htmlspecialchars($item["booking_id"]) ?></td>
                             <td><?= htmlspecialchars($item["user_id"]) ?></td>
                             <td><?= htmlspecialchars($item["service_id"]) ?></td>
@@ -168,16 +174,40 @@ if (isset($_POST["add_booking"])) {
                             <td><?= htmlspecialchars($item["start_time"]) ?></td>
                             <td><?= htmlspecialchars($item["end_time"]) ?></td>
                             <td><?= htmlspecialchars($item["status"]) ?></td>
+
                             <td>
-                            <a href="edit-booking.php?id=<?= $item['booking_id'] ?>" class="edit-btn"> Edit  </a>
+
+                                <a href="edit-booking.php?id=<?= $item['booking_id'] ?>"
+                                   class="edit-btn">
+                                    Edit
+                                </a>
+
+                                <form action="delete-booking.php"
+                                      method="POST"
+                                      onsubmit="return confirm('Are you sure you want to delete this booking?');">
+
+                                    <input
+                                        type="hidden"
+                                        name="booking_id"
+                                        value="<?= htmlspecialchars($item['booking_id']) ?>"
+                                    >
+
+                                    <button type="submit"
+                                            name="delete_booking"
+                                            class="delete-btn">
+                                        Delete
+                                    </button>
+
+                                </form>
+
                             </td>
 
-                            
                         </tr>
 
                     <?php endforeach; ?>
 
                 </tbody>
+
             </table>
 
         </section>
