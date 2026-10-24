@@ -47,6 +47,15 @@ if (session_status() == PHP_SESSION_NONE) {
             <?php endif; ?>
 
 
+            <?php if (isset($_SESSION["user_id"]) && ($_SESSION["role"] ?? "") === "customer"): ?>
+
+    <a href="/salon-booking-system/customer/my-bookings.php">
+        My Bookings
+    </a>
+
+<?php endif; ?>
+
+
             
            <a href="/salon-booking-system/customer/create-booking.php" class="btn btn-gold">
              Book Now
