@@ -156,6 +156,18 @@ public function getBookingsByUserId($user_id) {
 }
 
 
+public function cancelBooking($booking_id, $user_id) {
+
+    $sql = "UPDATE bookings
+            SET status = 'cancelled'
+            WHERE booking_id = ? AND user_id = ?";
+
+    $stmt = $this->pdo->prepare($sql);
+
+    return $stmt->execute([$booking_id, $user_id]);
+}
+
+
 
 
 
