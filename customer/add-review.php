@@ -98,6 +98,8 @@ if (isset($_POST["add_review"])) {
 
             <h1>Rate Your Experience</h1>
 
+
+            
             <p>How was your appointment at AURELIA?</p>
 
             <?php if ($error != ""): ?>
