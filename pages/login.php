@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -11,14 +12,14 @@ $auth = new Auth($pdo);
 
 $error = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if (isset($_POST["login"])) {
 
     $email = $_POST["email"] ?? "";
     $password = $_POST["password"] ?? "";
 
     $user = $auth->login($email, $password);
 
-    if ($user) { 
+    if ($user) {
         //بخزن البيانات اذا صح
         $_SESSION["user_id"] = $user["user_id"];
         $_SESSION["full_name"] = $user["full_name"];
@@ -46,9 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login | AURELIA</title>
-     <link rel="stylesheet" href="../css/main.css">
-<link rel="stylesheet" href="../css/auth.css">
-      
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/auth.css">
+
 </head>
 
 <body>
@@ -87,15 +88,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         required>
                 </div>
 
-                <button type="submit" class="auth-btn">
+                <button type="submit" name="login" class="auth-btn">
                     Log In
                 </button>
 
-                 <?php if ($error): ?>
-                 <p class="error-message">
-                          <?= $error ?>
-                 </p>
-               <?php endif; ?>
+                <?php if ($error): ?>
+                    <p class="error-message">
+                        <?= $error ?>
+                    </p>
+                <?php endif; ?>
 
             </form>
 
