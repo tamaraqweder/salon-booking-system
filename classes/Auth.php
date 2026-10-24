@@ -8,21 +8,26 @@ class Auth{
     }
 
 
+public function login($email, $password) {
 
-    public function login($email,$password){
-        $sql = "SELECT * FROM users WHERE email = ?";
-        $stmt=$this->pdo->prepare($sql);
-        $stmt->execute([$email]);
+    $sql = "SELECT * FROM users WHERE email = ?";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([$email]);
 
+  
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-         $user = $stmt->fetch(PDO::FETCH_ASSOC);//بنجيب نتيجة الاستعلام على شكل Associative Array
-          if ($user && password_verify($password, $user["password_hash"])) {
-            return $user;
-        }
-            return false;
-
-
+    if (!$user) {
+        return false;
     }
+
+    if (password_verify($password, $user["password_hash"])) {
+        return $user;
+    }
+
+    return false;
+}
+
 
 
 
