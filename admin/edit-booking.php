@@ -152,24 +152,32 @@ if (isset($_POST["update_booking"])) {
                 >
 
                 <label for="status">Status</label>
-                <select id="status" name="status" required>
+               
+<label for="status">Status</label>
+<select id="status" name="status" required>
 
-                    <option value="pending"
-                        <?= $bookingData["status"] === "pending" ? "selected" : "" ?>>
-                        Pending
-                    </option>
+    <option value="pending"
+        <?= $bookingData["status"] === "pending" ? "selected" : "" ?>>
+        Pending
+    </option>
 
-                    <option value="confirmed"
-                        <?= $bookingData["status"] === "confirmed" ? "selected" : "" ?>>
-                        Confirmed
-                    </option>
+    <option value="confirmed"
+        <?= $bookingData["status"] === "confirmed" ? "selected" : "" ?>>
+        Confirmed
+    </option>
 
-                    <option value="cancelled"
-                        <?= $bookingData["status"] === "cancelled" ? "selected" : "" ?>>
-                        Cancelled
-                    </option>
+    <option value="completed"
+        <?= $bookingData["status"] === "completed" ? "selected" : "" ?>>
+        Completed
+    </option>
 
-                </select>
+    <option value="cancelled"
+        <?= $bookingData["status"] === "cancelled" ? "selected" : "" ?>>
+        Cancelled
+    </option>
+
+</select>
+
 
                 <button type="submit" name="update_booking">
                     Update Booking

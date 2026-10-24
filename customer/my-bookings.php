@@ -5,11 +5,13 @@ session_start();
 
 require "../classes/Database.php";
 require "../classes/Booking.php";
+require "../classes/Review.php";
 
 $database = new Database();
 $pdo = $database->connect();
 
 $booking = new Booking($pdo);
+$review = new Review($pdo);
 
 if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "customer") {
     header("Location: ../pages/login.php");
@@ -77,11 +79,30 @@ $myBookings = $booking->getBookingsByUserId($user_id);
 
                             <td>
 
-                                <?php if ($item["status"] != "cancelled"): ?>
+                                <?php if ($item["status"] == "completed"): ?>
 
-                                    <form action="cancel-booking.php"
-                                          method="POST"
-                                          onsubmit="return confirm('Are you sure you want to cancel this booking?');">
+                                    <?php if ($review->hasReview($item["booking_id"])): ?>
+
+                                        <span>Already Reviewed</span>
+
+                                    <?php else: ?>
+
+                                        <a
+                                            href="add-review.php?booking_id=<?= urlencode($item["booking_id"]) ?>"
+                                            class="rate-btn"
+                                        >
+                                            Rate
+                                        </a>
+
+                                    <?php endif; ?>
+
+                                <?php elseif ($item["status"] != "cancelled"): ?>
+
+                                    <form
+                                        action="cancel-booking.php"
+                                        method="POST"
+                                        onsubmit="return confirm('Are you sure you want to cancel this booking?');"
+                                    >
 
                                         <input
                                             type="hidden"
