@@ -25,7 +25,6 @@ if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "customer") {
 $allServices = $service->getAllServices();
 $allStaff = $staff->getAllStaff();
 
-
 if (isset($_POST["add_booking"])) {
 
     $user_id = $_SESSION["user_id"];
@@ -38,65 +37,49 @@ if (isset($_POST["add_booking"])) {
 
     $status = "pending";
 
-
-    if ($start_time >= $end_time)
-       {
-            die("End time must be after start time.");
-       }
-
-
+    if ($start_time >= $end_time) {
+        die("End time must be after start time.");
+    }
 
     $available = $schedule->isStaffAvailable(
-    $staff_id,
-    $booking_date,
-    $start_time,
-    $end_time
-      );
+        $staff_id,
+        $booking_date,
+        $start_time,
+        $end_time
+    );
 
-     if ($available == false)
-         {
-            die("Staff is not available at this time.");
-        }
+    if ($available == false) {
+        die("Staff is not available at this time.");
+    }
 
+    $booked = $booking->isTimeBooked(
+        $staff_id,
+        $booking_date,
+        $start_time,
+        $end_time
+    );
 
+    if ($booked == true) {
+        die("This time slot is already booked.");
+    }
 
+    $result = $booking->addBooking(
+        $user_id,
+        $service_id,
+        $staff_id,
+        $booking_date,
+        $start_time,
+        $end_time,
+        $status
+    );
 
-        $booked = $booking->isTimeBooked(
-    $staff_id,
-    $booking_date,
-    $start_time,
-    $end_time
-);
-
-if ($booked == true) {
-    die("This time slot is already booked.");
+    if ($result == true) {
+        header("Location: my-bookings.php");
+        exit;
+    }
 }
-
-
-
-
-
-$result = $booking->addBooking(
-    $user_id,
-    $service_id,
-    $staff_id,
-    $booking_date,
-    $start_time,
-    $end_time,
-    $status
-);
-
-if ($result == true) {
-    header("Location: my-bookings.php");
-    exit;
-}
-
-
-}
-
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,51 +87,97 @@ if ($result == true) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>AURELIA | Book Appointment</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/booking.css">
 </head>
 
 <body>
 
-    <h1>Book Appointment</h1>
+    <?php include "../includes/navbar.php"; ?>
 
-    <form action="" method="POST">
+    <main class="booking-page">
 
-        <label for="service_id">Choose Service</label>
-        <select name="service_id" id="service_id" required>
-            <option value="">Select Service</option>
+        <div class="booking-container">
 
-            <?php foreach ($allServices as $item): ?>
-                <option value="<?= htmlspecialchars($item['service_id']) ?>">
-                    <?= htmlspecialchars($item['service_name']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+            <div class="booking-heading">
+                <span>BOOK YOUR VISIT</span>
+                <h1>Book Appointment</h1>
+                <p>Choose your favorite service and preferred appointment time.</p>
+            </div>
 
-        <label for="staff_id">Choose Staff</label>
-        <select name="staff_id" id="staff_id" required>
-            <option value="">Select Staff</option>
+            <form action="" method="POST" class="booking-form">
 
-            <?php foreach ($allStaff as $item): ?>
-                <option value="<?= htmlspecialchars($item['staff_id']) ?>">
-                    <?= htmlspecialchars($item['full_name']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+                <label for="service_id">Choose Service</label>
+                <select name="service_id" id="service_id" required>
+                    <option value="">Select Service</option>
 
-        <label for="booking_date">Booking Date</label>
-        <input type="date" name="booking_date" id="booking_date" min="<?= date('Y-m-d') ?>" required>
+                    <?php foreach ($allServices as $item): ?>
+                        <option value="<?= htmlspecialchars($item['service_id']) ?>">
+                            <?= htmlspecialchars($item['service_name']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
 
-        <label for="start_time">Start Time</label>
-        <input type="time" name="start_time" id="start_time" required>
+                <label for="staff_id">Choose Staff</label>
+                <select name="staff_id" id="staff_id" required>
+                    <option value="">Select Staff</option>
 
-        <label for="end_time">End Time</label>
-        <input type="time" name="end_time" id="end_time" required>
+                    <?php foreach ($allStaff as $item): ?>
+                        <option value="<?= htmlspecialchars($item['staff_id']) ?>">
+                            <?= htmlspecialchars($item['full_name']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
 
-        <button type="submit" name="add_booking">
-            Confirm Booking
-        </button>
+                <label for="booking_date">Booking Date</label>
+                <input
+                    type="date"
+                    name="booking_date"
+                    id="booking_date"
+                    min="<?= date('Y-m-d') ?>"
+                    required
+                >
 
-    </form>
+                <div class="time-fields">
+
+                    <div>
+                        <label for="start_time">Start Time</label>
+                        <input
+                            type="time"
+                            name="start_time"
+                            id="start_time"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="end_time">End Time</label>
+                        <input
+                            type="time"
+                            name="end_time"
+                            id="end_time"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <button type="submit" name="add_booking">
+                    Confirm Booking
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <?php include "../includes/footer.php"; ?>
+
+    <script src="../js/main.js"></script>
 
 </body>
 </html>

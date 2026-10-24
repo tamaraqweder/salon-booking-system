@@ -1,0 +1,107 @@
+
+/* MY BOOKINGS PAGE */
+
+.my-bookings {
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 30px 0;
+}
+
+/* PAGE TITLE */
+
+.my-bookings h1 {
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.my-bookings p {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 40px;
+}
+
+/* TABLE CONTAINER */
+
+.table-container {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+/* BOOKINGS TABLE */
+
+.my-bookings table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+}
+
+.my-bookings th {
+    background: var(--ivory);
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 18px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.my-bookings td {
+    padding: 18px;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.my-bookings tbody tr:hover {
+    background: var(--ivory);
+}
+
+/* STATUS */
+
+.my-bookings td:nth-child(7) {
+    color: var(--gold-dark);
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* CANCEL BUTTON */
+
+.my-bookings button {
+    background: var(--dark);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.my-bookings button:hover {
+    background: #A94442;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .my-bookings {
+        margin: 30px auto;
+    }
+
+    .my-bookings h1 {
+        font-size: 30px;
+    }
+
+    .my-bookings th,
+    .my-bookings td {
+        padding: 12px;
+        font-size: 12px;
+    }
+}

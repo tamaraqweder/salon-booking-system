@@ -28,72 +28,93 @@ $myBookings = $booking->getBookingsByUserId($user_id);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>AURELIA | My Bookings</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/my-bookings.css">
 </head>
 
 <body>
 
-    <h1>My Bookings</h1>
+    <!-- NAVBAR -->
+    <?php include "../includes/navbar.php"; ?>
 
-    <table border="1">
+    <main class="my-bookings">
 
-        <thead>
-            <tr>
-                <th>Booking ID</th>
-                <th>Service ID</th>
-                <th>Staff ID</th>
-                <th>Date</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
+        <h1>My Bookings</h1>
+        <p>View and manage your salon appointments.</p>
 
-        <tbody>
+        <div class="table-container">
 
-            <?php foreach ($myBookings as $item): ?>
+            <table>
 
-                <tr>
-                    <td><?= htmlspecialchars($item["booking_id"]) ?></td>
-                    <td><?= htmlspecialchars($item["service_id"]) ?></td>
-                    <td><?= htmlspecialchars($item["staff_id"]) ?></td>
-                    <td><?= htmlspecialchars($item["booking_date"]) ?></td>
-                    <td><?= htmlspecialchars($item["start_time"]) ?></td>
-                    <td><?= htmlspecialchars($item["end_time"]) ?></td>
-                    <td><?= htmlspecialchars($item["status"]) ?></td>
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Service ID</th>
+                        <th>Staff ID</th>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
 
-                    <td>
+                <tbody>
 
-                        <?php if ($item["status"] != "cancelled"): ?>
+                    <?php foreach ($myBookings as $item): ?>
 
-                            <form action="cancel-booking.php"
-                                  method="POST"
-                                  onsubmit="return confirm('Are you sure you want to cancel this booking?');">
+                        <tr>
+                            <td><?= htmlspecialchars($item["booking_id"]) ?></td>
+                            <td><?= htmlspecialchars($item["service_id"]) ?></td>
+                            <td><?= htmlspecialchars($item["staff_id"]) ?></td>
+                            <td><?= htmlspecialchars($item["booking_date"]) ?></td>
+                            <td><?= htmlspecialchars($item["start_time"]) ?></td>
+                            <td><?= htmlspecialchars($item["end_time"]) ?></td>
+                            <td><?= htmlspecialchars($item["status"]) ?></td>
 
-                                <input
-                                    type="hidden"
-                                    name="booking_id"
-                                    value="<?= htmlspecialchars($item["booking_id"]) ?>"
-                                >
+                            <td>
 
-                                <button type="submit" name="cancel_booking">
-                                    Cancel
-                                </button>
+                                <?php if ($item["status"] != "cancelled"): ?>
 
-                            </form>
+                                    <form action="cancel-booking.php"
+                                          method="POST"
+                                          onsubmit="return confirm('Are you sure you want to cancel this booking?');">
 
-                        <?php endif; ?>
+                                        <input
+                                            type="hidden"
+                                            name="booking_id"
+                                            value="<?= htmlspecialchars($item["booking_id"]) ?>"
+                                        >
 
-                    </td>
+                                        <button type="submit" name="cancel_booking">
+                                            Cancel
+                                        </button>
 
-                </tr>
+                                    </form>
 
-            <?php endforeach; ?>
+                                <?php endif; ?>
 
-        </tbody>
+                            </td>
 
-    </table>
+                        </tr>
+
+                    <?php endforeach; ?>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <?php include "../includes/footer.php"; ?>
+
+    <script src="../js/main.js"></script>
 
 </body>
 </html>

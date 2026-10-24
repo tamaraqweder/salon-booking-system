@@ -1,0 +1,126 @@
+
+/* BOOKING PAGE */
+
+.booking-page {
+    background: var(--ivory);
+    padding: 70px 20px;
+    min-height: 75vh;
+}
+
+.booking-container {
+    max-width: 650px;
+    margin: auto;
+}
+
+/* HEADING */
+
+.booking-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.booking-heading span {
+    color: var(--gold-dark);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.booking-heading h1 {
+    font-size: 40px;
+    margin: 10px 0;
+}
+
+.booking-heading p {
+    color: var(--gray);
+    font-size: 15px;
+}
+
+/* FORM */
+
+.booking-form {
+    background: var(--white);
+    padding: 40px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.booking-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.booking-form select,
+.booking-form input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--white);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.booking-form select:focus,
+.booking-form input:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+/* TIME FIELDS */
+
+.time-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.time-fields input {
+    margin-bottom: 25px;
+}
+
+/* BUTTON */
+
+.booking-form button {
+    width: 100%;
+    padding: 15px;
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.booking-form button:hover {
+    background: var(--gold-dark);
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .booking-page {
+        padding: 40px 15px;
+    }
+
+    .booking-form {
+        padding: 25px;
+    }
+
+    .booking-heading h1 {
+        font-size: 30px;
+    }
+
+    .time-fields {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
