@@ -17,18 +17,22 @@ $service = new Service($pdo);
 $staff = new Staff($pdo);
 $schedule = new Schedule($pdo);
 
+// التأكد أن المستخدم Customer
 if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "customer") {
     header("Location: ../pages/login.php");
     exit;
 }
 
+// جلب الخدمات والموظفين
 $allServices = $service->getAllServices();
 $allStaff = $staff->getAllStaff();
 
+// عند الضغط على Confirm Booking
 if (isset($_POST["add_booking"])) {
 
     $user_id = $_SESSION["user_id"];
 
+    // استقبال بيانات الحجز
     $service_id = $_POST["service_id"];
     $staff_id = $_POST["staff_id"];
     $booking_date = $_POST["booking_date"];
@@ -37,10 +41,12 @@ if (isset($_POST["add_booking"])) {
 
     $status = "pending";
 
+    // التأكد أن وقت النهاية بعد البداية
     if ($start_time >= $end_time) {
         die("End time must be after start time.");
     }
 
+    // التأكد أن الموظف متاح في هذا الوقت
     $available = $schedule->isStaffAvailable(
         $staff_id,
         $booking_date,
@@ -52,6 +58,7 @@ if (isset($_POST["add_booking"])) {
         die("Staff is not available at this time.");
     }
 
+    // التأكد أنه لا يوجد حجز متعارض
     $booked = $booking->isTimeBooked(
         $staff_id,
         $booking_date,
@@ -63,6 +70,7 @@ if (isset($_POST["add_booking"])) {
         die("This time slot is already booked.");
     }
 
+    // إضافة الحجز إلى قاعدة البيانات
     $result = $booking->addBooking(
         $user_id,
         $service_id,
@@ -73,6 +81,7 @@ if (isset($_POST["add_booking"])) {
         $status
     );
 
+    // الانتقال إلى My Bookings عند نجاح الحجز
     if ($result == true) {
         header("Location: my-bookings.php");
         exit;
@@ -80,6 +89,7 @@ if (isset($_POST["add_booking"])) {
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
